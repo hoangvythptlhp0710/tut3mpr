@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/spin"
+        android:layout_width="82dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/spin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/jump"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/jump"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/star"
+        android:layout_width="176dp"
+        android:layout_height="191dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="268dp"
+        android:alpha="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/star" />
+
+    <ImageButton
+        android:id="@+id/btnBall"
+        android:layout_width="61dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStar"
+        app:srcCompat="@drawable/ball_circle" />
+
+    <ImageButton
+        android:id="@+id/btnStar"
+        android:layout_width="65dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="20dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/star_circle"
+        tools:layout_editor_absoluteY="115dp" />
+
+    <ImageView
+        android:id="@+id/ball"
+        android:layout_width="177dp"
+        android:layout_height="191dp"
+        android:layout_marginTop="268dp"
+        android:alpha="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ball_circle" />
+
+    <Button
+        android:id="@+id/flipByY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="Turn Around"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/jump"
+        app:layout_constraintHorizontal_bias="0.426"
+        app:layout_constraintStart_toEndOf="@+id/spin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

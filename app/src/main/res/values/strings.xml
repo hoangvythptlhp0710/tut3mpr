@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Amin</string>
+    <string name="spin">SPIN</string>
+    <string name="turn_around">TURN AROUND</string>
+    <string name="jump">JUMP</string>
+
+</resources>
