@@ -1,33 +1,45 @@
 package com.example.ex1;
 
 import android.annotation.SuppressLint;
-import android.media.MediaParser;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.view.View;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.Animation;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private boolean showingCenterImg = true;
+    private ImageButton starBtn;
+    private ImageButton ballBtn;
     private int mRotationAngle = 0;
     private int moveByY = 0;
     private int rotateByY = 0;
 
-    private ImageView mImageView;
+    private ImageView starImg;
+    private ImageView ballImg;
+
+    private ImageView currentImg;
+
+    Button spinButton;
+    Button jumpBtn;
+    Button flipBtn;
+    Button clapHand;
+    MediaPlayer clap;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mImageView = findViewById(R.id.star);
+
+        starBtn = findViewById(R.id.btnStar);
+        ballBtn = findViewById(R.id.btnBall);
+        
+        starImg = findViewById(R.id.star);
+        ballImg = findViewById(R.id.ball);
+        
+        currentImg = starImg;
 
         if (savedInstanceState != null) {
             mRotationAngle = savedInstanceState.getInt("rotation_angle");
@@ -44,38 +56,64 @@ public class MainActivity extends AppCompatActivity {
             flipImg(rotateByY);
         }
 
-        Button spinButton = findViewById(R.id.spin);
+        spinButton = findViewById(R.id.spin);
         spinButton.setOnClickListener(v -> {
             mRotationAngle += 360;
             rotateImage(mRotationAngle);
         });
-        
-        Button jumpBtn = findViewById(R.id.jump);
+
+        jumpBtn = findViewById(R.id.jump);
         jumpBtn.setOnClickListener(v -> {
             moveByY = -300;
             jumpImg(moveByY);
         });
 
-        Button flipBtn = findViewById(R.id.flipByY);
+        flipBtn = findViewById(R.id.flipByY);
         flipBtn.setOnClickListener(v -> {
             rotateByY += 360;
             flipImg(rotateByY);
         });
+
+        clapHand = findViewById(R.id.clap);
+        clap = MediaPlayer.create(MainActivity.this, R.raw.clapping);
+        clapHand.setOnClickListener(v -> {
+            clap.setOnCompletionListener(mp -> {
+                clap.release();
+            });
+            clap.start();
+            clap.setLooping(true);
+        });
+
+        starBtn.setOnClickListener(v -> {
+            starImg.animate().alpha(1).setDuration(2000);
+            ballImg.animate().alpha(0).setDuration(2000);
+            currentImg = starImg;
+        });
+
+        ballBtn.setOnClickListener(v -> {
+            starImg.animate().alpha(0).setDuration(2000);
+            ballImg.animate().alpha(1).setDuration(2000);
+            currentImg = ballImg;
+        });
+
+
     }
 
     private void rotateImage(int mRotationAngle) {
-        mImageView.animate().rotation(mRotationAngle).setDuration(1000);
+        currentImg.animate().rotation(mRotationAngle).setDuration(1000);
     }
 
     private void jumpImg(int moveByY) {
-        mImageView.animate().translationYBy(moveByY).setDuration(1000).withEndAction(() -> {
-                 mImageView.animate().translationY(0).setDuration(1000);
+        currentImg.animate().translationYBy(moveByY).setDuration(1000).withEndAction(() -> {
+            currentImg.animate().translationY(0).setDuration(1000);
         });
     }
 
     private void flipImg(int rotateByY) {
-        mImageView.animate().rotationY(rotateByY).setDuration(1000);
+        currentImg.animate().rotationY(rotateByY).setDuration(1000);
     }
+
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
