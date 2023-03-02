@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">tut4</string>
+    <string name="enter_link_to_video_then_click_play">Enter link to video then click Play</string>
+    <string name="link_to_video">Link to video</string>
+</resources>
