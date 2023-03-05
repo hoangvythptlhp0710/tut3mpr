@@ -11,8 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
     String link;
+
+    int currentPosition;
     @Override
     @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,30 +33,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        //get current playback position
-
-
-        //save the video position
-        outState.putString("link", link);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        //get saved video playback position
-        link = savedInstanceState.getString("link");
-
-        //set the video playback position
-        EditText input = findViewById(R.id.linkVideo);
-        input.setText(link);
 
     }
 }
