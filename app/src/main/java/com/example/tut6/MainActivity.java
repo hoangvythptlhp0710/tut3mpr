@@ -1,15 +1,16 @@
 package com.example.tut6;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,12 +45,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
 
+        TextView textView = findViewById(R.id.ahihi);
         switch (item.getItemId()) {
             case R.id.vie:
                 Toast.makeText(this, "VIETNAMESE", Toast.LENGTH_SHORT);
+                textView.setText("Vietnamese");
                 return true;
             case R.id.eng:
                 Toast.makeText(this, "ENGLISH", Toast.LENGTH_SHORT);
+                textView.setText("ENGLISH");
                 return true;
         }
 
