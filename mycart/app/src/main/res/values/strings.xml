@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Cart</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_price">Product Price</string>
+</resources>
